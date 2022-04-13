@@ -69,7 +69,7 @@ window.onload = function () {
             card.innerHTML += "<p><b>Speed:</b> " + (plane.speed || "...") + "km/h</p>"
             card.innerHTML += "<p><b>Altitude:</b> " + (plane.altitude || "...") + "m</p>"
             card.innerHTML += "<p><b>Cat:</b> " + (plane.category || "UNKNOWN") + "</p>"
-            let now = Math.round(+new Date()/1000);
+            let now = Math.round(+new Date() / 1000);
             card.innerHTML += "<p>Last seen: " + (now - plane.time) + " seconds ago</p>"
             return card
         }

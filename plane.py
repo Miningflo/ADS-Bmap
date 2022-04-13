@@ -4,6 +4,8 @@ import time
 
 import pyModeS as pms
 
+import constants
+
 
 class Plane:
     def __init__(self, icao):
@@ -42,11 +44,23 @@ class Plane:
             self.odd = {"msg": message, "t": int(time.time())}
         else:
             self.even = {"msg": message, "t": int(time.time())}
+        pos = self.__calc_position()
+        if pos:
+            f = open("./coords.csv", 'a')
+            f.write(f"{pos[0]},{pos[1]}\n")
+            f.close()
         self.__update()
 
     def __calc_position(self):
         if self.odd and self.even:
-            return pms.adsb.position(self.even["msg"], self.odd["msg"], self.even["t"], self.odd["t"])
+            try:
+                return pms.adsb.position(
+                    self.even["msg"], self.odd["msg"],
+                    self.even["t"], self.odd["t"],
+                    constants.observer[0], constants.observer[1]
+                )
+            except RuntimeError:
+                return None
         return None
 
     def __update(self):

@@ -44,12 +44,14 @@ class Plane:
             self.odd = {"msg": message, "t": int(time.time())}
         else:
             self.even = {"msg": message, "t": int(time.time())}
-        pos = self.__calc_position()
-        if pos:
-            f = open("./coords.csv", 'a')
-            f.write(f"{pos[0]},{pos[1]}\n")
-            f.close()
         self.__update()
+
+        if constants.logging:
+            pos = self.__calc_position()
+            if pos:
+                f = open("./coords.csv", 'a')
+                f.write(f"{round(self.last.timestamp())},{self.icao},{pos[0]},{pos[1]},{pms.adsb.altitude(message)}\n")
+                f.close()
 
     def __calc_position(self):
         if self.odd and self.even:

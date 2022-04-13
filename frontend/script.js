@@ -82,8 +82,10 @@ window.onload = function () {
         })
     }
 
+    let basetitle = document.title
     function frame() {
         fetch("http://localhost:8080").then(r => r.json()).then(planes => {
+            document.title = basetitle + " (" + planes.length + ")"
             drawplanes(planes)
             updatetable(planes)
             window.setTimeout(frame, 500)

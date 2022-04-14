@@ -41,9 +41,8 @@ def decode(l):
                     call = pms.adsb.callsign(msg).replace("_", " ").strip()
                     planelist.callsign(icao, call)
                 elif tc == 19:
-                    (speed, heading, vrate, *other) = pms.adsb.velocity(msg)
+                    (speed, heading, *other) = pms.adsb.velocity(msg)
                     speed *= 1.852
-                    vrate *= 0.3048
                     planelist.speed(icao, round(speed, 2))
                     planelist.heading(icao, heading)
                 elif tc <= 22:

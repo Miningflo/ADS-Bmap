@@ -23,7 +23,7 @@ window.onload = function () {
                     fill: new ol.style.Fill({
                         color: 'white'
                     }),
-                    text: map.getView().getZoom() >= 4 ? feature.get('name') : "",
+                    text: map.getView().getZoom() >= 8 ? feature.get('name') : "",
                     textAlign: 'center',
                     offsetX: 5,
                     offsetY: -20,

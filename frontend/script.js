@@ -88,7 +88,7 @@ window.onload = function () {
 
     let basetitle = document.title
     function frame() {
-        fetch(url + ":" + port).then(r => r.json()).then(planes => {
+        fetch(url + ":" + port + "/api").then(r => r.json()).then(planes => {
             document.title = basetitle + " (" + planes.length + ")"
             drawplanes(planes)
             updatetable(planes)

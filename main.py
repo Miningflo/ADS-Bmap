@@ -73,7 +73,7 @@ planelist = PlaneList()
 handler = MyHandler(planelist)
 server = http.server.HTTPServer(constants.server_address, handler)
 print(
-    f"Starting server on http://{constants.server_address[0] if constants.server_address != '' else 'localhost'}:{constants.server_address[1]}")
+    f"Starting server on http://{constants.server_address[0] if constants.server_address[0] != '' else 'localhost'}:{constants.server_address[1]}")
 thread = threading.Thread(target=server.serve_forever)
 thread.setDaemon(True)
 thread.start()

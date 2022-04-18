@@ -1,9 +1,8 @@
 import datetime
-import http
 import json
 import shlex
+import socketserver
 import threading
-from http.server import HTTPServer
 from subprocess import Popen, PIPE, STDOUT
 import pyModeS as pms
 
@@ -71,7 +70,7 @@ f.close()
 planelist = PlaneList()
 
 handler = MyHandler(planelist)
-server = http.server.HTTPServer(constants.server_address, handler)
+server = socketserver.TCPServer(constants.server_address, handler)
 print(
     f"Starting server on http://{constants.server_address[0] if constants.server_address[0] != '' else 'localhost'}:{constants.server_address[1]}")
 thread = threading.Thread(target=server.serve_forever)

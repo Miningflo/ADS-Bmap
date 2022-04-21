@@ -1,4 +1,4 @@
-let url = "http://192.168.137.107"
+let url = location.hostname
 // let url = "http://localhost"
 let port = "80"
 

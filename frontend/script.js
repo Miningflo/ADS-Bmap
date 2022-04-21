@@ -1,6 +1,6 @@
 let url = "http://192.168.137.107"
 // let url = "http://localhost"
-let port = "8080"
+let port = "80"
 
 window.onload = function () {
     var map = new ol.Map({

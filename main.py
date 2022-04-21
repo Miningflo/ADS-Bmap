@@ -31,7 +31,7 @@ def decode(l):
             if df == 17:
                 tc = pms.adsb.typecode(msg)
                 print(
-                    f"[|{icao}| " + lookup("message", tc) + f" ({tc})")
+                    f"|{icao}| " + lookup("message", tc) + f" ({tc})")
                 if tc <= 4:
                     cat = pms.adsb.category(msg)
                     c = "No category information"
@@ -71,8 +71,7 @@ planelist = PlaneList()
 
 handler = MyHandler(planelist)
 server = socketserver.TCPServer(constants.server_address, handler)
-print(
-    f"Starting server on http://{constants.server_address[0] if constants.server_address[0] != '' else 'localhost'}:{constants.server_address[1]}")
+print(f"Starting server on http://{constants.server_address[0] if constants.server_address[0] != '' else 'localhost'}:{constants.server_address[1]}")
 thread = threading.Thread(target=server.serve_forever)
 thread.setDaemon(True)
 thread.start()

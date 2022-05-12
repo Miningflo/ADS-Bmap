@@ -1,0 +1,12 @@
+[Unit]
+Description=ADS-B Service
+
+[Service]
+User=root
+WorkingDirectory=<LOCATION OF REPOSITORY>/ADS-Bmap/
+ExecStart=python3 -u main.py
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

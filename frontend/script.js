@@ -1,7 +1,3 @@
-let url = "http://192.168.137.107"
-// let url = "http://localhost"
-let port = "8080"
-
 window.onload = function () {
     var map = new ol.Map({
         target: 'map',
@@ -88,7 +84,7 @@ window.onload = function () {
 
     let basetitle = document.title
     function frame() {
-        fetch(url + ":" + port + "/api").then(r => r.json()).then(planes => {
+        fetch("/api").then(r => r.json()).then(planes => {
             document.title = basetitle + " (" + planes.length + ")"
             drawplanes(planes)
             updatetable(planes)

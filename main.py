@@ -6,7 +6,7 @@ import threading
 from subprocess import Popen, PIPE, STDOUT
 import pyModeS as pms
 
-import constants
+from constants import constants
 from planelist import PlaneList
 from server import MyHandler
 
@@ -70,13 +70,13 @@ f.close()
 planelist = PlaneList()
 
 handler = MyHandler(planelist)
-server = socketserver.TCPServer(constants.server_address, handler)
+server = socketserver.TCPServer(tuple(constants['server_address']), handler)
 print(
-    f"Starting server on http://{constants.server_address[0] if constants.server_address[0] != '' else 'localhost'}:{constants.server_address[1]}")
+    f"Starting server on http://{constants['server_address'][0] if constants['server_address'][0] != '' else 'localhost'}:{constants['server_address'][1]}")
 thread = threading.Thread(target=server.serve_forever)
 thread.setDaemon(True)
 thread.start()
 
 print("It is normal the copyright notice is buffered, RAW output is unbuffered")
 print("Currently Handling DF17 messages 1-22 (identification, position and velocity)")
-run_command(f"{constants.dump1090} --raw --fix")
+run_command(f"{constants['dump1090']} --raw --fix")

@@ -1,5 +1,8 @@
-# dump1090 = "./dump1090/dump1090.exe"
-dump1090 = "../dump1090/dump1090"
-server_address = ("", 80)
-observer = (51.043443, 3.713749)
-logging = False
+import yaml
+
+constants = None
+with open("constants.yml", "r") as stream:
+    try:
+        constants = yaml.safe_load(stream)
+    except yaml.YAMLError as exc:
+        print(exc)

@@ -1,7 +1,17 @@
 import datetime
 import json
 
+import requests as requests
+
 from plane import Plane
+from constants import constants
+
+
+def lookup(icao):
+    if icao.upper() in map(str.upper, constants["poi"]):
+        # send discord webhook message
+        url = "https://globe.adsbexchange.com/?icao=" + icao
+        requests.post(constants["hook"], data={'content': url})
 
 
 class PlaneList:
@@ -17,6 +27,7 @@ class PlaneList:
     def __create(self, icao):
         if icao not in self.planes.keys():
             self.planes[icao] = Plane(icao)
+            lookup(icao)
             self.__update()
 
     def callsign(self, icao, callsign):

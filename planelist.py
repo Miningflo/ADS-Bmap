@@ -27,8 +27,9 @@ class PlaneList:
     def __create(self, icao):
         if icao not in self.planes.keys():
             self.planes[icao] = Plane(icao)
-            lookup(icao)
             self.__update()
+            if constants["alerting"]:
+                lookup(icao)
 
     def callsign(self, icao, callsign):
         self.__create(icao)

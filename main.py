@@ -30,8 +30,7 @@ def decode(l):
             df = pms.df(msg)
             if df == 17:
                 tc = pms.adsb.typecode(msg)
-                print(
-                    f"|{icao}| " + lookup("message", tc) + f" ({tc})")
+                print(f"|{icao}| " + lookup("message", tc) + f" ({tc})")
                 if tc <= 4:
                     cat = pms.adsb.category(msg)
                     c = "No category information"

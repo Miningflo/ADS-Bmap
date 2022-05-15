@@ -46,7 +46,7 @@ class Plane:
             self.even = {"msg": message, "t": int(time.time())}
         self.__update()
 
-        if constants.logging:
+        if constants['logging']:
             pos = self.__calc_position()
             if pos:
                 f = open("./coords.csv", 'a')

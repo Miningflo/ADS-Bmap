@@ -4,7 +4,7 @@ import time
 
 import pyModeS as pms
 
-import constants
+from constants import constants
 
 
 class Plane:

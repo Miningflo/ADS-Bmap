@@ -59,7 +59,7 @@ class Plane:
                 return pms.adsb.position(
                     self.even["msg"], self.odd["msg"],
                     self.even["t"], self.odd["t"],
-                    constants.observer[0], constants.observer[1]
+                    constants['observer'][0], constants['observer'][1]
                 )
             except RuntimeError:
                 return None

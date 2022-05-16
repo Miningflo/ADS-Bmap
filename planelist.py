@@ -8,7 +8,7 @@ from constants import constants
 
 
 def lookup(icao):
-    if icao.upper() in map(str.upper, constants["poi"]):
+    if str(icao).upper() in [str(e).upper() for e in constants["poi"]]:
         # send discord webhook message
         url = "https://globe.adsbexchange.com/?icao=" + icao
         requests.post(constants["hook"], data={'content': url})
@@ -29,7 +29,7 @@ class PlaneList:
             self.planes[icao] = Plane(icao)
             self.__update()
             if constants["alerting"]:
-                lookup(str(icao))
+                lookup(icao)
 
     def callsign(self, icao, callsign):
         self.__create(icao)

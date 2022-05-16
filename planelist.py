@@ -29,7 +29,7 @@ class PlaneList:
             self.planes[icao] = Plane(icao)
             self.__update()
             if constants["alerting"]:
-                lookup(icao)
+                lookup(str(icao))
 
     def callsign(self, icao, callsign):
         self.__create(icao)
